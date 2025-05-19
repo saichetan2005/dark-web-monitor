@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Threat Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .critical { background-color: #ffdddd; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Dark Web Monitoring</h1>
+    <p>Total Leaks: {{ total_count }} | Critical: {{ critical_count }}</p>
+    
+    <table>
+        <tr>
+            <th>Source</th>
+            <th>Data</th>
+            <th>Date</th>
+        </tr>
+        {% for leak in leaks %}
+        <tr class="{% if leak[4] == 1 %}critical{% endif %}">
+            <td>{{ leak[1] }}</td>
+            <td>{{ leak[2] }}</td>
+            <td>{{ leak[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
