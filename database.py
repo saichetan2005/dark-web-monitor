@@ -3,7 +3,6 @@ import os
 from config import DB_PATH
 
 def init_db():
-    """Initialize database with proper schema"""
     try:
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
