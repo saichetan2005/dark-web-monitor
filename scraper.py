@@ -7,7 +7,6 @@ from time import sleep
 from datetime import datetime
 from config import *
 
-# Logging setup
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -33,10 +32,9 @@ def scrape_paste_content(paste_url, cursor, conn):
         content = response.text
         logger.debug(f"Content sample: {content[:100]}...")
         
-        # Enhanced patterns
         patterns = [
-            r'([\w\.\+\-]+@[\w\-]+\.[\w\.\-]+)[\:\|\;\,\s]\s*([^\s]+)',  # email:pass
-            r'(user(name)?|login)[\:\=]\s*([^\s]+)\s+(pass(word)?|pwd)[\:\=]\s*([^\s]+)'  # user:pass
+            r'([\w\.\+\-]+@[\w\-]+\.[\w\.\-]+)[\:\|\;\,\s]\s*([^\s]+)', 
+            r'(user(name)?|login)[\:\=]\s*([^\s]+)\s+(pass(word)?|pwd)[\:\=]\s*([^\s]+)'  
         ]
         
         for pattern in patterns:
